@@ -185,6 +185,12 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="DlgFileSize.h" />
+    <ClInclude Include="DlgTab1.h" />
+    <ClInclude Include="DlgTab2.h" />
+    <ClInclude Include="DlgTab3.h" />
+    <ClInclude Include="DlgTab4.h" />
+    <ClInclude Include="Function.h" />
     <ClInclude Include="Program.h" />
     <ClInclude Include="ProgramDlg.h" />
     <ClInclude Include="Resource.h" />
@@ -192,6 +198,12 @@
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="DlgFileSize.cpp" />
+    <ClCompile Include="DlgTab1.cpp" />
+    <ClCompile Include="DlgTab2.cpp" />
+    <ClCompile Include="DlgTab3.cpp" />
+    <ClCompile Include="DlgTab4.cpp" />
+    <ClCompile Include="Function.cpp" />
     <ClCompile Include="Program.cpp" />
     <ClCompile Include="ProgramDlg.cpp" />
     <ClCompile Include="stdafx.cpp">
@@ -213,4 +225,9 @@
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties RESOURCE_FILE="Program.rc" />
+    </VisualStudio>
+  </ProjectExtensions>
 </Project>
