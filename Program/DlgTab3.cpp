@@ -6,7 +6,6 @@
 #include "DlgTab3.h"
 #include "afxdialogex.h"
 
-
 // CDlgTab3 ¶Ô»°¿ò
 
 IMPLEMENT_DYNAMIC(CDlgTab3, CDialogEx)
@@ -24,12 +23,14 @@ CDlgTab3::~CDlgTab3()
 void CDlgTab3::DoDataExchange(CDataExchange* pDX)
 {
 	CDialogEx::DoDataExchange(pDX);
+	DDX_Control(pDX, IDC_EDIT4, m_cOutput);
 }
 
 
 BEGIN_MESSAGE_MAP(CDlgTab3, CDialogEx)
 	ON_BN_CLICKED(IDC_RADIO_FILECREATE, &CDlgTab3::OnBnClickedRadioFilecreate)
 	ON_BN_CLICKED(IDC_RADIO_FOLDERCREATE, &CDlgTab3::OnBnClickedRadioFoldercreate)
+	ON_BN_CLICKED(IDC_BUTTON2, &CDlgTab3::OnBnClickedButton2)
 END_MESSAGE_MAP()
 
 
@@ -70,4 +71,11 @@ void CDlgTab3::OnBnClickedRadioFoldercreate()
 	((CMFCButton*)GetDlgItem(IDC_RADIO_PPT))->ShowWindow(true);
 	((CMFCButton*)GetDlgItem(IDC_RADIO_XLS))->ShowWindow(true);
 	((CMFCButton*)GetDlgItem(IDC_RADIO_TXT))->ShowWindow(true);
+}
+
+
+void CDlgTab3::OnBnClickedButton2()
+{
+	// TODO: Add your control notification handler code here
+	getFolderPath(&m_cOutput, &m_hWnd);
 }

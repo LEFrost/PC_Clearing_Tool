@@ -27,4 +27,6 @@ public:
 	virtual BOOL OnInitDialog();
 	CListCtrl m_cFileCountList;
 	afx_msg void OnLvnItemchangedListFilecount(NMHDR *pNMHDR, LRESULT *pResult);
+	CEdit m_cSelPath;
+	afx_msg void OnBnClickedButton();
 };

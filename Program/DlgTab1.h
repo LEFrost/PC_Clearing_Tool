@@ -1,6 +1,7 @@
 #pragma once
 #include "afxwin.h"
 #include "Function.h"
+#include "afxcmn.h"
 
 // CDlgTab1 ¶Ô»°¿ò
 
@@ -26,4 +27,6 @@ public:
 	afx_msg void OnBnClickedCheckSystemfile();
 	virtual BOOL OnInitDialog();
 	CComboBox m_cClearPro;
+	CListCtrl m_cClearProList;
+	afx_msg void OnNMClickSyslinkClearpro(NMHDR *pNMHDR, LRESULT *pResult);
 };

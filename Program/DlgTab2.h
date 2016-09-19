@@ -5,6 +5,7 @@
 #include "DlgFileSize.h"
 #include "Function.h"
 #include "afxwin.h"
+#include "afxcmn.h"
 
 
 class CDlgTab2 : public CDialogEx
@@ -34,4 +35,9 @@ public:
 	CComboBox m_cBigFileClear;
 	CComboBox m_cSelTime;
 	CComboBox m_cFindSameNameFile;
+	CListCtrl m_cBigFile;
+	CListCtrl m_cConditionFind;
+	CListCtrl m_cSameFile;
+	afx_msg void OnNMClickSyslinkBigfile(NMHDR *pNMHDR, LRESULT *pResult);
+	afx_msg void OnNMClickSyslinkSamefile(NMHDR *pNMHDR, LRESULT *pResult);
 };

@@ -25,10 +25,12 @@ void CDlgTab4::DoDataExchange(CDataExchange* pDX)
 {
 	CDialogEx::DoDataExchange(pDX);
 	DDX_Control(pDX, IDC_LIST_FILECOUNT, m_cFileCountList);
+	DDX_Control(pDX, IDC_EDIT1, m_cSelPath);
 }
 
 
 BEGIN_MESSAGE_MAP(CDlgTab4, CDialogEx)
+	ON_BN_CLICKED(IDC_BUTTON_, &CDlgTab4::OnBnClickedButton)
 END_MESSAGE_MAP()
 
 
@@ -56,3 +58,10 @@ BOOL CDlgTab4::OnInitDialog()
 
 
 
+
+
+void CDlgTab4::OnBnClickedButton()
+{
+	// TODO: Add your control notification handler code here
+	getFolderPath(&m_cSelPath, &m_hWnd);
+}

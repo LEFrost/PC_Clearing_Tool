@@ -3,6 +3,7 @@
 
 // CDlgTab3 ¶Ô»°¿ò
 #include "Function.h"
+#include "afxwin.h"
 
 
 class CDlgTab3 : public CDialogEx
@@ -27,4 +28,6 @@ public:
 	afx_msg void OnBnClickedRadioFilecreate();
 	virtual BOOL OnInitDialog();
 	afx_msg void OnBnClickedRadioFoldercreate();
+	CEdit m_cOutput;
+	afx_msg void OnBnClickedButton2();
 };
