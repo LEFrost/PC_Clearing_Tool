@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="CAboutDlg" Collapsed="true">
+    <Position X="14.75" Y="3.75" Width="1.5" />
+    <NestedTypes>
+      <Enum Name="CAboutDlg::__unnamed_enum_0003_1" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>ProgramDlg.cpp</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAABAABAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ProgramDlg.cpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CDlgFileSize">
+    <Position X="0.5" Y="5" Width="1.75" />
+    <NestedTypes>
+      <Enum Name="CDlgFileSize::__unnamed_enum_0274_1" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>DlgFileSize.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAEAAAAAAAAACAABAAAQAAAAAQAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DlgFileSize.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CDlgTab1">
+    <Position X="4.5" Y="1" Width="1.5" />
+    <NestedTypes>
+      <Enum Name="CDlgTab1::__unnamed_enum_026c_1" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>DlgTab1.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>IAAAAAMAgAAAAAAAABACAAAAAAAAAAAAAACAAAAAAAw=</HashCode>
+      <FileName>DlgTab1.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CDlgTab2">
+    <Position X="6.25" Y="0.75" Width="1.5" />
+    <NestedTypes>
+      <Enum Name="CDlgTab2::__unnamed_enum_026e_1" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>DlgTab2.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>QAQIAAkBBBAQAAAAABgAAAAAQBAIAAAEAAAAAAAAAAg=</HashCode>
+      <FileName>DlgTab2.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CDlgTab3">
+    <Position X="8.25" Y="0.5" Width="1.5" />
+    <NestedTypes>
+      <Enum Name="CDlgTab3::__unnamed_enum_0270_1" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>DlgTab3.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAAAEAAAAAgAAIgBAAAAAAEBACAAAAAAAAAAAAAAg=</HashCode>
+      <FileName>DlgTab3.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CDlgTab4">
+    <Position X="10.75" Y="0.75" Width="1.5" />
+    <NestedTypes>
+      <Enum Name="CDlgTab4::__unnamed_enum_0272_1" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>DlgTab4.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAAAEAAAAAAAAIABAAAIAAAAAABQAAAAAAAAAAAAo=</HashCode>
+      <FileName>DlgTab4.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CProgramApp">
+    <Position X="13.5" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAgAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAA=</HashCode>
+      <FileName>Program.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CProgramDlg">
+    <Position X="3" Y="0.5" Width="1.5" />
+    <NestedTypes>
+      <Enum Name="CProgramDlg::__unnamed_enum_0004_1" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>ProgramDlg.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>EACAAAMAAAAAAADwEBAIAAAAAAAAAAQAAAAAAAAQAAA=</HashCode>
+      <FileName>ProgramDlg.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CDialogEx" Collapsed="true">
+    <Position X="13.25" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABBAAACAAEAAAiAACCCBEBQAAAAAAEAIACCgQAAAAI=</HashCode>
+      <FileName>c:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\atlmfc\include\afxdialogex.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

@@ -2,7 +2,6 @@
 #include "afxwin.h"
 #include "Function.h"
 #include "afxcmn.h"
-
 // CDlgTab1 ¶Ô»°¿ò
 
 class CDlgTab1 : public CDialogEx
@@ -29,4 +28,8 @@ public:
 	CComboBox m_cClearPro;
 	CListCtrl m_cClearProList;
 	afx_msg void OnNMClickSyslinkClearpro(NMHDR *pNMHDR, LRESULT *pResult);
+	afx_msg void OnBnClickedButtonClearEasy();
+	CButton m_cSystemTempFile;
+	CButton m_cUserLocalFile;
+	CEdit m_cProgress;
 };

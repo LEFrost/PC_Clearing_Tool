@@ -217,6 +217,7 @@
     <ResourceCompile Include="Program.rc" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="ClassDiagram.cd" />
     <None Include="res\Program.rc2" />
   </ItemGroup>
   <ItemGroup>
