@@ -40,4 +40,6 @@ public:
 	CListCtrl m_cSameFile;
 	afx_msg void OnNMClickSyslinkBigfile(NMHDR *pNMHDR, LRESULT *pResult);
 	afx_msg void OnNMClickSyslinkSamefile(NMHDR *pNMHDR, LRESULT *pResult);
+	afx_msg void OnBnClickedButtonTab2Find();
+	afx_msg void OnBnClickedButtonTba2Clear();
 };

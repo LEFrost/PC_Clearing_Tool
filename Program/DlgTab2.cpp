@@ -39,6 +39,8 @@ BEGIN_MESSAGE_MAP(CDlgTab2, CDialogEx)
 	ON_BN_CLICKED(IDC_RADIO_FILENAME, &CDlgTab2::OnBnClickedRadioFilename)
 	ON_NOTIFY(NM_CLICK, IDC_SYSLINK_BIGFILE, &CDlgTab2::OnNMClickSyslinkBigfile)
 	ON_NOTIFY(NM_CLICK, IDC_SYSLINK_SAMEFILE, &CDlgTab2::OnNMClickSyslinkSamefile)
+	ON_BN_CLICKED(IDC_BUTTON_TAB2_FIND, &CDlgTab2::OnBnClickedButtonTab2Find)
+	ON_BN_CLICKED(IDC_BUTTON_TBA2_CLEAR, &CDlgTab2::OnBnClickedButtonTba2Clear)
 END_MESSAGE_MAP()
 
 
@@ -86,9 +88,8 @@ BOOL CDlgTab2::OnInitDialog()
 
 	getDisk(&m_cBigFileClear);
 	getDisk(&m_cFindSameNameFile);
-	m_cBigFile.InsertColumn(0, _T("文件名"), LVCFMT_LEFT, 100);
-	m_cBigFile.InsertColumn(1, _T("大小"), LVCFMT_LEFT, 50);
-	m_cBigFile.InsertColumn(2, _T("路径"), LVCFMT_LEFT, 200);
+	m_cBigFile.InsertColumn(0, _T("大小"), LVCFMT_LEFT, 100);
+	m_cBigFile.InsertColumn(1, _T("路径"), LVCFMT_LEFT, 500);
 	m_cConditionFind.InsertColumn(0, _T("文件名"), LVCFMT_LEFT, 100);
 	m_cConditionFind.InsertColumn(1, _T("路径"), LVCFMT_LEFT, 200);
 	m_cSameFile.InsertColumn(0, _T("文件名"), LVCFMT_LEFT, 100);
@@ -118,4 +119,50 @@ void CDlgTab2::OnNMClickSyslinkSamefile(NMHDR *pNMHDR, LRESULT *pResult)
 	// TODO: Add your control notification handler code here
 	*pResult = 0;
 	getDisk(&m_cFindSameNameFile);
+}
+
+
+void CDlgTab2::OnBnClickedButtonTab2Find()
+{
+	// TODO: Add your control notification handler code here
+	m_cBigFile.DeleteAllItems();
+	ClearStruct * FindBig = new ClearStruct();
+	FindBig->pList = &m_cBigFile;
+	m_cBigFileClear.GetWindowText(*(FindBig->strDir));
+	HANDLE handle;
+	handle = CreateThread(NULL, 0, (LPTHREAD_START_ROUTINE)FindBigFile, FindBig, 0, 0);
+}
+
+
+void CDlgTab2::OnBnClickedButtonTba2Clear()
+{
+	// TODO: Add your control notification handler code here
+
+	int nSelect = m_cBigFile.GetSelectedCount();
+	if (nSelect == 0)
+	{
+		MessageBox(L"NO");
+	}
+	else
+	{
+		POSITION pos = m_cBigFile.GetFirstSelectedItemPosition();
+		if (pos == NULL)
+		{
+			return;
+		}
+		else
+		{
+			while (pos)
+			{
+				int nItem = m_cBigFile.GetNextSelectedItem(pos);
+				CString path = m_cBigFile.GetItemText(nItem, 1);
+
+				m_cBigFile.DeleteItem(nItem);
+				DeleteFile(path);
+
+				pos = m_cBigFile.GetFirstSelectedItemPosition();
+			}
+		}
+
+	}
 }

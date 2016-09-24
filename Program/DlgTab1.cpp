@@ -35,6 +35,7 @@ void CDlgTab1::DoDataExchange(CDataExchange* pDX)
 BEGIN_MESSAGE_MAP(CDlgTab1, CDialogEx)
 	ON_NOTIFY(NM_CLICK, IDC_SYSLINK_CLEARPRO, &CDlgTab1::OnNMClickSyslinkClearpro)
 	ON_BN_CLICKED(IDC_BUTTON_CLEAR_EASY, &CDlgTab1::OnBnClickedButtonClearEasy)
+	ON_BN_CLICKED(IDC_BUTTON_SELDISK, &CDlgTab1::OnBnClickedButtonSeldisk)
 END_MESSAGE_MAP()
 
 
@@ -50,8 +51,7 @@ BOOL CDlgTab1::OnInitDialog()
 #pragma region 界面初始化
 	getDisk(&m_cClearPro);
 
-	m_cClearProList.InsertColumn(0, _T("文件名"), LVCFMT_LEFT, 100);
-	m_cClearProList.InsertColumn(1, _T("路径"), LVCFMT_LEFT, 200);
+	m_cClearProList.InsertColumn(1, _T("路径"), LVCFMT_LEFT, 300);
 
 #pragma endregion
 
@@ -67,72 +67,75 @@ void CDlgTab1::OnNMClickSyslinkClearpro(NMHDR *pNMHDR, LRESULT *pResult)
 	getDisk(&m_cClearPro);
 }
 
-bool isUse = false;
+//bool isUse = false;
 void CDlgTab1::OnBnClickedButtonClearEasy()
 {
 	// TODO: Add your control notification handler code here
-	HANDLE handle;
+	HANDLE handle1,handle2;
 	ClearStruct* clearStruct = new ClearStruct();
 	clearStruct->cEdit = &m_cProgress;
+
+	wchar_t path1[100];
+	SHGetSpecialFolderPath(0, path1, CSIDL_WINDOWS, 0);
+	CString temp1;
+	temp1 = path1;
+	temp1 += "\\Temp";
+	//MessageBox(temp);
+	*(clearStruct->strDir) = temp1;
+
+
+	wchar_t path2[100];
+	SHGetSpecialFolderPath(0, path2, CSIDL_APPDATA, 0);
+	int temp;
+	for (int i = 0; i < sizeof(path2) / sizeof(int); i++)
+		if (path2[i] == '\0')
+		{
+
+			temp = i;
+			break;
+		}
+	//Local\Temp
+
+	path2[temp - 7] = '\0';
+	CString s(path2);
+
+	s += "Local\\Temp";
+	*(clearStruct->strDir) = s;
 	if (m_cSystemTempFile.GetCheck())
 	{
-		wchar_t path[100];
-		SHGetSpecialFolderPath(0, path, CSIDL_WINDOWS, 0);
-		CString temp;
-		temp = path;
-		temp += "\\Temp";
-		//MessageBox(temp);
-		*(clearStruct->strDir) = temp;
-		handle = CreateThread(NULL, 0, (LPTHREAD_START_ROUTINE)ClearFolder, clearStruct, 0, 0);
-		isUse = true;
+		
+		handle1 = CreateThread(NULL, 0, (LPTHREAD_START_ROUTINE)ClearFolder, clearStruct, 0, 0);
+
 	}
 	else if (m_cUserLocalFile.GetCheck())
 	{
-		wchar_t path[100];
-		SHGetSpecialFolderPath(0, path, CSIDL_APPDATA, 0);
-		int temp;;
-		for (int i = 0; i < sizeof(path) / sizeof(int); i++)
-			if (path[i] == '\0')
-			{
+	
+		handle2 = CreateThread(NULL, 0, (LPTHREAD_START_ROUTINE)ClearFolder, clearStruct, 0, 0);
 
-				temp = i;
-				break;
-			}
-		//Local\Temp
-
-		path[temp - 7] = '\0';
-		CString s(path);
-
-		s += "Local\\Temp";
-		*(clearStruct->strDir) = s;
-		handle = CreateThread(NULL, 0, (LPTHREAD_START_ROUTINE)ClearFolder, clearStruct, 0, 0);
-
-		isUse = true;
 
 	}
 	else if (m_cSystemTempFile.GetCheck() && m_cUserLocalFile.GetCheck())
 	{
-		isUse = true;
+		handle1 = CreateThread(NULL, 0, (LPTHREAD_START_ROUTINE)ClearFolder, clearStruct, 0, 0);
+
+		handle2 = CreateThread(NULL, 0, (LPTHREAD_START_ROUTINE)ClearFolder, clearStruct, 0, 0);
+
 	}
 	else
 	{
 		MessageBox(_T("请选择清理项"));
 	}
-	DWORD code;
-	bool res = GetExitCodeThread(handle, &code);
-	for (;true;)
-	{
-
-		if (!res&&code == STILL_ACTIVE/*!isUse*/)
-		{
-
-		}
-		else
-		{
-			m_cProgress.SetWindowTextW(_T(""));
-			
-			return;
-		}
-	}
-
 }
+
+
+void CDlgTab1::OnBnClickedButtonSeldisk()
+{
+	//m_cClearProList.DeleteAllItems();
+	//// TODO: Add your control notification handler code here
+	//ClearStruct * FindBig = new ClearStruct();
+	//FindBig->pList = &m_cClearProList;
+	//m_cClearPro.GetWindowText(*(FindBig->strDir));
+	//HANDLE handle;
+	//handle = CreateThread(NULL, 0, (LPTHREAD_START_ROUTINE)FindBigFile, FindBig, 0, 0);
+}
+

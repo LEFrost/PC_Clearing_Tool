@@ -4,11 +4,14 @@
 
 struct ClearStruct
 {
-	CString *strDir=new CString();
-	CEdit* cEdit=new CEdit();
+	CString *strDir = new CString();
+	CString *strExt = new CString();
+	CEdit* cEdit = new CEdit();
+	CListCtrl * pList = new CListCtrl();
 };
 
 void getDisk(CComboBox *m_cComboBox);
 void getFolderPath(CEdit *,HWND*);
 CString getLocalTemp();
-void ClearFolder(ClearStruct* clearStruct);
+int ClearFolder(ClearStruct* clearStruct);
+void FindBigFile(ClearStruct * BigStruct);

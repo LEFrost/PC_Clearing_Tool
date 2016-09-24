@@ -32,4 +32,6 @@ public:
 	CButton m_cSystemTempFile;
 	CButton m_cUserLocalFile;
 	CEdit m_cProgress;
+	afx_msg void OnBnClickedButtonSeldisk();
+	afx_msg void OnBnClickedCheck5();
 };
