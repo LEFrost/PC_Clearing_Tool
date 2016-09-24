@@ -42,4 +42,16 @@ public:
 	afx_msg void OnNMClickSyslinkSamefile(NMHDR *pNMHDR, LRESULT *pResult);
 	afx_msg void OnBnClickedButtonTab2Find();
 	afx_msg void OnBnClickedButtonTba2Clear();
+	afx_msg void OnCbnSelchangeComboFilenameSle();
+	int selItem[3] = { false,false,false };
+	afx_msg void OnEnChangeEdit1();
+	afx_msg void OnNMClickSyslinkBigfile2(NMHDR *pNMHDR, LRESULT *pResult);
+	afx_msg void OnCbnSelchangeComboFileclear();
+	afx_msg void OnNMClickSyslinkConditionfind(NMHDR *pNMHDR, LRESULT *pResult);
+	CComboBox m_cConditionFindCombo;
+	afx_msg void OnBnClickedButtonConditionfind();
+	CEdit m_cConditionName;
+	CEdit m_cMinSize;
+	CEdit m_cMaxSize;
+	afx_msg void OnLvnItemchangedListConditionfind(NMHDR *pNMHDR, LRESULT *pResult);
 };

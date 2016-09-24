@@ -9,6 +9,10 @@ struct ClearStruct
 	CEdit* cEdit = new CEdit();
 	CListCtrl * pList = new CListCtrl();
 	bool suffixIsCheck[8] = { false, false, false ,false, false ,false ,false ,false };
+	long timeDifference;
+	CString Name;
+	CString minSize;
+	CString maxSize;
 };
 
 void getDisk(CComboBox *m_cComboBox);
@@ -17,3 +21,6 @@ CString getLocalTemp();
 int ClearFolder(ClearStruct* clearStruct);
 void FindBigFile(ClearStruct * BigStruct);
 void ClearPro(ClearStruct * clearPro);
+void FindFileForTime(ClearStruct* fileTime);
+void FindFileForName(ClearStruct* fileName); 
+void FindFileForSize(ClearStruct* fileName);
