@@ -34,4 +34,16 @@ public:
 	CEdit m_cProgress;
 	afx_msg void OnBnClickedButtonSeldisk();
 	afx_msg void OnBnClickedCheck5();
+	ClearStruct* clearPro = new ClearStruct();
+
+	afx_msg void OnBnClickedCheckTmp();
+	afx_msg void OnBnClickedCheckLog();
+	afx_msg void OnBnClickedCheckMp();
+	afx_msg void OnBnClickedCheckGid();
+	afx_msg void OnBnClickedCheckChk();
+	afx_msg void OnBnClickedCheckOld();
+	afx_msg void OnBnClickedCheckPf();
+	afx_msg void OnBnClickedCheckDiz();
+	afx_msg void OnBnClickedButtonCheckall();
+	afx_msg void OnBnClickedButtonClearPro();
 };

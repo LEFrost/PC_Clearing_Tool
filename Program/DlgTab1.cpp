@@ -36,6 +36,15 @@ BEGIN_MESSAGE_MAP(CDlgTab1, CDialogEx)
 	ON_NOTIFY(NM_CLICK, IDC_SYSLINK_CLEARPRO, &CDlgTab1::OnNMClickSyslinkClearpro)
 	ON_BN_CLICKED(IDC_BUTTON_CLEAR_EASY, &CDlgTab1::OnBnClickedButtonClearEasy)
 	ON_BN_CLICKED(IDC_BUTTON_SELDISK, &CDlgTab1::OnBnClickedButtonSeldisk)
+	ON_BN_CLICKED(IDC_CHECK_TMP, &CDlgTab1::OnBnClickedCheckTmp)
+	ON_BN_CLICKED(IDC_CHECK_LOG, &CDlgTab1::OnBnClickedCheckLog)
+	ON_BN_CLICKED(IDC_CHECK_MP, &CDlgTab1::OnBnClickedCheckMp)
+	ON_BN_CLICKED(IDC_CHECK_GID, &CDlgTab1::OnBnClickedCheckGid)
+	ON_BN_CLICKED(IDC_CHECK_CHK, &CDlgTab1::OnBnClickedCheckChk)
+	ON_BN_CLICKED(IDC_CHECK_OLD, &CDlgTab1::OnBnClickedCheckOld)
+	ON_BN_CLICKED(IDC_CHECK_PF, &CDlgTab1::OnBnClickedCheckPf)
+	ON_BN_CLICKED(IDC_CHECK_DIZ, &CDlgTab1::OnBnClickedCheckDiz)
+	ON_BN_CLICKED(IDC_BUTTON_CLEAR_PRO, &CDlgTab1::OnBnClickedButtonClearPro)
 END_MESSAGE_MAP()
 
 
@@ -51,7 +60,7 @@ BOOL CDlgTab1::OnInitDialog()
 #pragma region 界面初始化
 	getDisk(&m_cClearPro);
 
-	m_cClearProList.InsertColumn(1, _T("路径"), LVCFMT_LEFT, 300);
+	m_cClearProList.InsertColumn(1, _T("路径"), LVCFMT_LEFT, 500);
 
 #pragma endregion
 
@@ -71,7 +80,7 @@ void CDlgTab1::OnNMClickSyslinkClearpro(NMHDR *pNMHDR, LRESULT *pResult)
 void CDlgTab1::OnBnClickedButtonClearEasy()
 {
 	// TODO: Add your control notification handler code here
-	HANDLE handle1,handle2;
+	HANDLE handle1, handle2;
 	ClearStruct* clearStruct = new ClearStruct();
 	clearStruct->cEdit = &m_cProgress;
 
@@ -103,13 +112,13 @@ void CDlgTab1::OnBnClickedButtonClearEasy()
 	*(clearStruct->strDir) = s;
 	if (m_cSystemTempFile.GetCheck())
 	{
-		
+
 		handle1 = CreateThread(NULL, 0, (LPTHREAD_START_ROUTINE)ClearFolder, clearStruct, 0, 0);
 
 	}
 	else if (m_cUserLocalFile.GetCheck())
 	{
-	
+
 		handle2 = CreateThread(NULL, 0, (LPTHREAD_START_ROUTINE)ClearFolder, clearStruct, 0, 0);
 
 
@@ -127,9 +136,30 @@ void CDlgTab1::OnBnClickedButtonClearEasy()
 	}
 }
 
-
+HANDLE clearPro_handle;
 void CDlgTab1::OnBnClickedButtonSeldisk()
 {
+	m_cClearProList.DeleteAllItems();
+	m_cClearPro.GetWindowText(*(clearPro->strDir));
+	clearPro->pList = &m_cClearProList;
+	bool temp = false;//查看是否勾选
+	for (int i = 0; i < 8; i++)
+	{
+		if (clearPro->suffixIsCheck[i])
+		{
+			temp = true;
+			break;
+
+		}
+	}
+	if (temp)
+	{
+		clearPro_handle = CreateThread(NULL, 0, (LPTHREAD_START_ROUTINE)ClearPro, clearPro, 0, 0);
+	}
+	else
+	{
+		MessageBox(L"请勾选所要清理的文件后缀!!!");
+	}
 	//m_cClearProList.DeleteAllItems();
 	//// TODO: Add your control notification handler code here
 	//ClearStruct * FindBig = new ClearStruct();
@@ -137,5 +167,112 @@ void CDlgTab1::OnBnClickedButtonSeldisk()
 	//m_cClearPro.GetWindowText(*(FindBig->strDir));
 	//HANDLE handle;
 	//handle = CreateThread(NULL, 0, (LPTHREAD_START_ROUTINE)FindBigFile, FindBig, 0, 0);
+}
+
+
+
+void CDlgTab1::OnBnClickedCheckTmp()
+{
+	// TODO: Add your control notification handler code here
+	if (!clearPro->suffixIsCheck[0])
+		clearPro->suffixIsCheck[0] = true;
+	else
+		clearPro->suffixIsCheck[0] = false;
+}
+
+
+void CDlgTab1::OnBnClickedCheckLog()
+{
+	// TODO: Add your control notification handler code here
+	if (!clearPro->suffixIsCheck[2])
+		clearPro->suffixIsCheck[2] = true;
+	else
+		clearPro->suffixIsCheck[2] = false;
+}
+
+
+void CDlgTab1::OnBnClickedCheckMp()
+{
+	// TODO: Add your control notification handler code here
+	if (!clearPro->suffixIsCheck[1])
+		clearPro->suffixIsCheck[1] = true;
+	else
+		clearPro->suffixIsCheck[1] = false;
+}
+
+
+void CDlgTab1::OnBnClickedCheckGid()
+{
+	// TODO: Add your control notification handler code here
+	if (!clearPro->suffixIsCheck[3])
+		clearPro->suffixIsCheck[3] = true;
+	else
+		clearPro->suffixIsCheck[3] = false;
+}
+
+
+void CDlgTab1::OnBnClickedCheckChk()
+{
+	// TODO: Add your control notification handler code here
+	if (!clearPro->suffixIsCheck[4])
+		clearPro->suffixIsCheck[4] = true;
+	else
+		clearPro->suffixIsCheck[4] = false;
+}
+
+
+void CDlgTab1::OnBnClickedCheckOld()
+{
+	// TODO: Add your control notification handler code here
+	if (!clearPro->suffixIsCheck[5])
+		clearPro->suffixIsCheck[5] = true;
+	else
+		clearPro->suffixIsCheck[5] = false;
+}
+
+
+void CDlgTab1::OnBnClickedCheckPf()
+{
+	// TODO: Add your control notification handler code here
+	if (!clearPro->suffixIsCheck[6])
+		clearPro->suffixIsCheck[6] = true;
+	else
+		clearPro->suffixIsCheck[6] = false;
+}
+
+
+void CDlgTab1::OnBnClickedCheckDiz()
+{
+	// TODO: Add your control notification handler code here
+	if (!clearPro->suffixIsCheck[7])
+		clearPro->suffixIsCheck[7] = true;
+	else
+		clearPro->suffixIsCheck[7] = false;
+}
+
+
+
+
+void CDlgTab1::OnBnClickedButtonClearPro()
+{
+	// TODO: Add your control notification handler code here
+	int nitem = m_cClearProList.GetItemCount();
+	if (nitem == 0)
+	{
+		MessageBox(L"清先查找文件");
+	}
+	else
+	{
+		for (int i = 0; i < nitem; i++)
+		{
+
+			CString path = m_cClearProList.GetItemText(0, 0);
+
+			m_cClearProList.DeleteItem(0);
+			DeleteFile(path);
+
+		}
+	}
+
 }
 

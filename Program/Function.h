@@ -8,6 +8,7 @@ struct ClearStruct
 	CString *strExt = new CString();
 	CEdit* cEdit = new CEdit();
 	CListCtrl * pList = new CListCtrl();
+	bool suffixIsCheck[8] = { false, false, false ,false, false ,false ,false ,false };
 };
 
 void getDisk(CComboBox *m_cComboBox);
@@ -15,3 +16,4 @@ void getFolderPath(CEdit *,HWND*);
 CString getLocalTemp();
 int ClearFolder(ClearStruct* clearStruct);
 void FindBigFile(ClearStruct * BigStruct);
+void ClearPro(ClearStruct * clearPro);
