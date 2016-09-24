@@ -13,6 +13,10 @@ struct ClearStruct
 	CString Name;
 	CString minSize;
 	CString maxSize;
+	HWND *hWnd;
+	int Num;//文件数量
+	CString fristName;
+	CString lastName;
 };
 
 void getDisk(CComboBox *m_cComboBox);
@@ -23,4 +27,6 @@ void FindBigFile(ClearStruct * BigStruct);
 void ClearPro(ClearStruct * clearPro);
 void FindFileForTime(ClearStruct* fileTime);
 void FindFileForName(ClearStruct* fileName); 
-void FindFileForSize(ClearStruct* fileName);
+void FindFileForSize(ClearStruct* fileSize);
+void FolderCreate(ClearStruct* folderName);
+void FileCreate(ClearStruct* fileName);

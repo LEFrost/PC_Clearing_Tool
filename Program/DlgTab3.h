@@ -30,4 +30,18 @@ public:
 	afx_msg void OnBnClickedRadioFoldercreate();
 	CEdit m_cOutput;
 	afx_msg void OnBnClickedButton2();
+	CEdit m_cFront;
+	CEdit m_cLast;
+	afx_msg void OnBnClickedButtonMakefile();
+	afx_msg void OnBnClickedButtonViewpath();
+
+	CEdit m_cNum;
+private:
+	bool isCreatFile = false;
+	CString strExt;
+public:
+	afx_msg void OnBnClickedRadioDoc();
+	afx_msg void OnBnClickedRadioPpt();
+	afx_msg void OnBnClickedRadioXls();
+	afx_msg void OnBnClickedRadioTxt();
 };

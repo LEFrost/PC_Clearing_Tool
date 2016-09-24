@@ -1,6 +1,24 @@
 ﻿#include "Function.h"
 #include "stdafx.h"
 
+struct ClearStruct
+{
+	CString *strDir = new CString();
+	CString *strExt = new CString();
+	CEdit* cEdit = new CEdit();
+	CListCtrl * pList = new CListCtrl();
+	bool suffixIsCheck[8] = { false, false, false ,false, false ,false ,false ,false };
+	long timeDifference;
+	CString Name;
+	CString minSize;
+	CString maxSize;
+	HWND *hWnd;
+	int Num;
+	CString fristName;
+	CString lastName;
+};
+
+
 void getDisk(CComboBox *m_cComboBox)
 {
 	m_cComboBox->ResetContent();
@@ -64,18 +82,7 @@ CString getLocalTemp()
 	s += "Local\\Temp";
 	return s;
 }
-struct ClearStruct
-{
-	CString *strDir = new CString();
-	CString *strExt = new CString();
-	CEdit* cEdit = new CEdit();
-	CListCtrl * pList = new CListCtrl();
-	bool suffixIsCheck[8] = { false, false, false ,false, false ,false ,false ,false };
-	long timeDifference;
-	CString Name;
-	CString minSize;
-	CString maxSize;
-};
+
 //使用strDir、cEdit
 int ClearFolder(ClearStruct* clearStruct)
 {
@@ -287,7 +294,7 @@ void FindFileForTime(ClearStruct * fileTime)
 	}
 	fileFinder.Close();
 }
-
+//strExt、strDir、Name、pList
 void FindFileForName(ClearStruct * fileName)
 {
 	CFileFind fileFinder;
@@ -321,7 +328,7 @@ void FindFileForName(ClearStruct * fileName)
 			CString strExtTmp = strFilePath.Right(file_filer_len);
 			if (strFilePath.GetLength() > file_filer_len)
 			{
-				
+
 				if (fileName->Name == fileFinder.GetFileTitle())
 					fileName->pList->InsertItem(0, strFilePath);
 
@@ -330,7 +337,7 @@ void FindFileForName(ClearStruct * fileName)
 	}
 	fileFinder.Close();
 }
-
+//strExt、strDir、minSize、maxSize、pList
 void FindFileForSize(ClearStruct * fileSize)
 {
 	CFileFind fileFinder;
@@ -360,7 +367,7 @@ void FindFileForSize(ClearStruct * fileSize)
 		}
 		else
 		{
-			
+
 			CString strFilePath = fileFinder.GetFilePath();
 			long min = _ttoi(fileSize->minSize);
 			long max = _ttoi(fileSize->maxSize);
@@ -368,16 +375,61 @@ void FindFileForSize(ClearStruct * fileSize)
 			CFileStatus fileStatus;
 			ULONGLONG size;
 			if (CFile::GetStatus(strFilePath, fileStatus))
-				size = fileStatus.m_size/1024/1024;
+				size = fileStatus.m_size / 1024 / 1024;
 
 			CString strExtTmp = strFilePath.Right(file_filer_len);
-			if (strFilePath.GetLength() > file_filer_len&&size<=max&&size>=min)
+			if (strFilePath.GetLength() > file_filer_len&&size <= max&&size >= min)
 			{
 
-					fileSize->pList->InsertItem(0, strFilePath);
+				fileSize->pList->InsertItem(0, strFilePath);
 
 			}
 		}
 	}
 	fileFinder.Close();
+}
+//hWnd、fristName、lastName、strDir
+void FolderCreate(ClearStruct * fileCreate)
+{
+	CString strFolderPath = *(fileCreate->strDir);
+	if (!PathIsDirectory(strFolderPath))
+	{
+		MessageBox(*(fileCreate->hWnd), _T("路径不存在"), _T("警告!!"), 0);
+	}
+	else
+	{
+		CString tempPath;
+		for (int i = 0; i < fileCreate->Num; i++)
+		{
+			tempPath = strFolderPath;
+			CString s;
+			s.Format(_T("(%i)"),i+1);
+			tempPath += "\\";
+			tempPath += fileCreate->fristName + s + fileCreate->lastName;
+			CreateDirectory(tempPath, NULL);
+		}
+	}
+}
+//strDir、strExt、fristName、lastName、Num
+void FileCreate(ClearStruct * fileName)
+{
+	CString strFolderPath = *(fileName->strDir);
+	if (!PathIsDirectory(strFolderPath))
+	{
+		MessageBox(*(fileName->hWnd), _T("路径不存在"), _T("警告!!"), 0);
+	}
+	else
+	{
+		CString tempPath;
+		for (int i = 0; i < fileName->Num; i++)
+		{
+			tempPath = strFolderPath;
+			CString s;
+			s.Format(_T("(%i)"), i + 1);
+			tempPath += "\\";
+			tempPath += fileName->fristName + s + fileName->lastName+*(fileName->strExt);
+			CFile mFile(tempPath, CFile::modeWrite | CFile::modeCreate);
+
+		}
+	}
 }
