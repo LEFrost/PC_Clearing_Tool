@@ -26,11 +26,13 @@ void CDlgTab4::DoDataExchange(CDataExchange* pDX)
 	CDialogEx::DoDataExchange(pDX);
 	DDX_Control(pDX, IDC_LIST_FILECOUNT, m_cFileCountList);
 	DDX_Control(pDX, IDC_EDIT1, m_cSelPath);
+	DDX_Control(pDX, IDC_EDIT_COUNT, m_cCount);
 }
 
 
 BEGIN_MESSAGE_MAP(CDlgTab4, CDialogEx)
 	ON_BN_CLICKED(IDC_BUTTON_, &CDlgTab4::OnBnClickedButton)
+	ON_BN_CLICKED(IDC_BUTTON_START, &CDlgTab4::OnBnClickedButtonStart)
 END_MESSAGE_MAP()
 
 
@@ -46,9 +48,9 @@ BOOL CDlgTab4::OnInitDialog()
 
 #pragma region 界面初始化
 
-	m_cFileCountList.InsertColumn(0, _T("名字"),LVCFMT_LEFT,50);
-	m_cFileCountList.InsertColumn(1, _T("大小"), LVCFMT_LEFT,100);
-	m_cFileCountList.InsertColumn(2, _T("路径"), LVCFMT_LEFT,300);
+	m_cFileCountList.InsertColumn(0, _T("名字"), LVCFMT_LEFT, 50);
+	m_cFileCountList.InsertColumn(1, _T("大小"), LVCFMT_LEFT, 100);
+	m_cFileCountList.InsertColumn(2, _T("路径"), LVCFMT_LEFT, 500);
 
 #pragma endregion
 
@@ -64,4 +66,17 @@ void CDlgTab4::OnBnClickedButton()
 {
 	// TODO: Add your control notification handler code here
 	getFolderPath(&m_cSelPath, &m_hWnd);
+}
+
+
+void CDlgTab4::OnBnClickedButtonStart()
+{
+	// TODO: Add your control notification handler code here
+	m_cFileCountList.DeleteAllItems();
+
+	ClearStruct* fileCount = new ClearStruct();
+	fileCount->pList = &m_cFileCountList;
+	m_cSelPath.GetWindowText(*(fileCount->strDir));
+	fileCount->cEdit = &m_cCount;
+	HANDLE handle = CreateThread(NULL, 0, (LPTHREAD_START_ROUTINE)FileCount, fileCount, 0, 0);
 }

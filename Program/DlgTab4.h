@@ -29,4 +29,6 @@ public:
 	afx_msg void OnLvnItemchangedListFilecount(NMHDR *pNMHDR, LRESULT *pResult);
 	CEdit m_cSelPath;
 	afx_msg void OnBnClickedButton();
+	afx_msg void OnBnClickedButtonStart();
+	CEdit m_cCount;
 };

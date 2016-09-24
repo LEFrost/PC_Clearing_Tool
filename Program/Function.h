@@ -30,3 +30,4 @@ void FindFileForName(ClearStruct* fileName);
 void FindFileForSize(ClearStruct* fileSize);
 void FolderCreate(ClearStruct* folderName);
 void FileCreate(ClearStruct* fileName);
+int FileCount(ClearStruct* fileCount);

@@ -44,6 +44,5 @@ public:
 	afx_msg void OnBnClickedCheckOld();
 	afx_msg void OnBnClickedCheckPf();
 	afx_msg void OnBnClickedCheckDiz();
-	afx_msg void OnBnClickedButtonCheckall();
 	afx_msg void OnBnClickedButtonClearPro();
 };
