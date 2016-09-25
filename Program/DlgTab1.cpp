@@ -90,7 +90,6 @@ void CDlgTab1::OnBnClickedButtonClearEasy()
 	temp1 = path1;
 	temp1 += "\\Temp";
 	//MessageBox(temp);
-	*(clearStruct->strDir) = temp1;
 
 
 	wchar_t path2[100];
@@ -109,15 +108,16 @@ void CDlgTab1::OnBnClickedButtonClearEasy()
 	CString s(path2);
 
 	s += "Local\\Temp";
-	*(clearStruct->strDir) = s;
-	if (m_cSystemTempFile.GetCheck())
+	if (m_cSystemTempFile.GetCheck()&&!m_cUserLocalFile.GetCheck())
 	{
+		*(clearStruct->strDir) = temp1;
 
 		handle1 = CreateThread(NULL, 0, (LPTHREAD_START_ROUTINE)ClearFolder, clearStruct, 0, 0);
 
 	}
-	else if (m_cUserLocalFile.GetCheck())
+	else if (m_cUserLocalFile.GetCheck()&&!m_cSystemTempFile.GetCheck())
 	{
+		*(clearStruct->strDir) = s;
 
 		handle2 = CreateThread(NULL, 0, (LPTHREAD_START_ROUTINE)ClearFolder, clearStruct, 0, 0);
 
@@ -125,7 +125,10 @@ void CDlgTab1::OnBnClickedButtonClearEasy()
 	}
 	else if (m_cSystemTempFile.GetCheck() && m_cUserLocalFile.GetCheck())
 	{
+		*(clearStruct->strDir) = temp1;
+
 		handle1 = CreateThread(NULL, 0, (LPTHREAD_START_ROUTINE)ClearFolder, clearStruct, 0, 0);
+		*(clearStruct->strDir) = s;
 
 		handle2 = CreateThread(NULL, 0, (LPTHREAD_START_ROUTINE)ClearFolder, clearStruct, 0, 0);
 

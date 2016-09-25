@@ -119,7 +119,7 @@ int ClearFolder(ClearStruct* clearStruct)
 		}
 	}
 	ff.Close();
-
+	clearStruct->cEdit->SetWindowText(L"");
 	//   然后删除该文件夹     
 	//RemoveDirectory(strDir);     
 	return -1;
