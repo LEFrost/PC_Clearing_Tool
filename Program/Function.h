@@ -1,6 +1,6 @@
 #pragma once
 #include "stdafx.h"
-#include "afxdialogex.h"
+
 
 struct ClearStruct
 {

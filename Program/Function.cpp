@@ -1,22 +1,23 @@
-﻿#include "Function.h"
-#include "stdafx.h"
+﻿#include"stdafx.h"
+#include"Function.h"
 
-struct ClearStruct
-{
-	CString *strDir = new CString();
-	CString *strExt = new CString();
-	CEdit* cEdit = new CEdit();
-	CListCtrl * pList = new CListCtrl();
-	bool suffixIsCheck[8] = { false, false, false ,false, false ,false ,false ,false };
-	long timeDifference;
-	CString Name;
-	CString minSize;
-	CString maxSize;
-	HWND *hWnd;
-	int Num;
-	CString fristName;
-	CString lastName;
-};
+//
+//struct ClearStruct
+//{
+//	CString *strDir = new CString();
+//	CString *strExt = new CString();
+//	CEdit* cEdit = new CEdit();
+//	CListCtrl * pList = new CListCtrl();
+//	bool suffixIsCheck[8] = { false, false, false ,false, false ,false ,false ,false };
+//	long timeDifference;
+//	CString Name;
+//	CString minSize;
+//	CString maxSize;
+//	HWND *hWnd;
+//	int Num;
+//	CString fristName;
+//	CString lastName;
+//};
 
 
 void getDisk(CComboBox *m_cComboBox)
