@@ -88,7 +88,7 @@ void CDlgTab3::OnBnClickedRadioFoldercreate()
 void CDlgTab3::OnBnClickedButtonMakefile()
 {
 	// TODO: Add your control notification handler code here
-	ClearStruct* create = new ClearStruct();
+	CFolderAndFileCreate* create = new CFolderAndFileCreate();
 	HWND *hwnd = new HWND();
 	create->hWnd = hwnd;
 	CString temp;
@@ -105,12 +105,12 @@ void CDlgTab3::OnBnClickedButtonMakefile()
 		{
 
 			*(create->strExt)=strExt;
-			FileCreate(create);
+			create->FileCreate(create);
 		}
 	}
 	else
 	{
-		FolderCreate(create);
+		create->FolderCreate(create);
 
 	}
 

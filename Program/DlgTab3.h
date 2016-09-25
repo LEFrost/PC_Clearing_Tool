@@ -4,7 +4,7 @@
 // CDlgTab3 ¶Ô»°¿ò
 #include "Function.h"
 #include "afxwin.h"
-
+#include "FolderAndFileCreate.h"
 
 class CDlgTab3 : public CDialogEx
 {

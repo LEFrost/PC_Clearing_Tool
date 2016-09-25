@@ -74,9 +74,9 @@ void CDlgTab4::OnBnClickedButtonStart()
 	// TODO: Add your control notification handler code here
 	m_cFileCountList.DeleteAllItems();
 
-	ClearStruct* fileCount = new ClearStruct();
+	CFileCount* fileCount = new CFileCount();
 	fileCount->pList = &m_cFileCountList;
 	m_cSelPath.GetWindowText(*(fileCount->strDir));
 	fileCount->cEdit = &m_cCount;
-	HANDLE handle = CreateThread(NULL, 0, (LPTHREAD_START_ROUTINE)FileCount, fileCount, 0, 0);
+	HANDLE handle = CreateThread(NULL, 0, (LPTHREAD_START_ROUTINE)fileCount->FileCount, fileCount, 0, 0);
 }

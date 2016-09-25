@@ -5,7 +5,8 @@
 #include "Program.h"
 #include "DlgTab1.h"
 #include "afxdialogex.h"
-
+#include "ClearFolder.h"
+#include "ClearPro.h"
 
 // CDlgTab1 对话框
 
@@ -80,9 +81,11 @@ void CDlgTab1::OnNMClickSyslinkClearpro(NMHDR *pNMHDR, LRESULT *pResult)
 void CDlgTab1::OnBnClickedButtonClearEasy()
 {
 	// TODO: Add your control notification handler code here
+	CClearFolder *m_cClearFolder=new CClearFolder();
+
 	HANDLE handle1, handle2;
-	ClearStruct* clearStruct = new ClearStruct();
-	clearStruct->cEdit = &m_cProgress;
+	//ClearStruct* clearStruct = new ClearStruct();
+	//clearStruct->cEdit = &m_cProgress;
 
 	wchar_t path1[100];
 	SHGetSpecialFolderPath(0, path1, CSIDL_WINDOWS, 0);
@@ -110,27 +113,27 @@ void CDlgTab1::OnBnClickedButtonClearEasy()
 	s += "Local\\Temp";
 	if (m_cSystemTempFile.GetCheck()&&!m_cUserLocalFile.GetCheck())
 	{
-		*(clearStruct->strDir) = temp1;
+		*(m_cClearFolder->strDir) = temp1;
 
-		handle1 = CreateThread(NULL, 0, (LPTHREAD_START_ROUTINE)ClearFolder, clearStruct, 0, 0);
+		handle1 = CreateThread(NULL, 0, (LPTHREAD_START_ROUTINE)m_cClearFolder->ClearFolder, m_cClearFolder, 0, 0);
 
 	}
 	else if (m_cUserLocalFile.GetCheck()&&!m_cSystemTempFile.GetCheck())
 	{
-		*(clearStruct->strDir) = s;
+		*(m_cClearFolder->strDir) = s;
 
-		handle2 = CreateThread(NULL, 0, (LPTHREAD_START_ROUTINE)ClearFolder, clearStruct, 0, 0);
+		handle2 = CreateThread(NULL, 0, (LPTHREAD_START_ROUTINE)m_cClearFolder->ClearFolder, m_cClearFolder, 0, 0);
 
 
 	}
 	else if (m_cSystemTempFile.GetCheck() && m_cUserLocalFile.GetCheck())
 	{
-		*(clearStruct->strDir) = temp1;
+		*(m_cClearFolder->strDir) = temp1;
 
-		handle1 = CreateThread(NULL, 0, (LPTHREAD_START_ROUTINE)ClearFolder, clearStruct, 0, 0);
-		*(clearStruct->strDir) = s;
+		handle1 = CreateThread(NULL, 0, (LPTHREAD_START_ROUTINE)m_cClearFolder->ClearFolder, m_cClearFolder, 0, 0);
+		*(m_cClearFolder->strDir) = s;
 
-		handle2 = CreateThread(NULL, 0, (LPTHREAD_START_ROUTINE)ClearFolder, clearStruct, 0, 0);
+		handle2 = CreateThread(NULL, 0, (LPTHREAD_START_ROUTINE)m_cClearFolder->ClearFolder, m_cClearFolder, 0, 0);
 
 	}
 	else
@@ -157,7 +160,7 @@ void CDlgTab1::OnBnClickedButtonSeldisk()
 	}
 	if (temp)
 	{
-		clearPro_handle = CreateThread(NULL, 0, (LPTHREAD_START_ROUTINE)ClearPro, clearPro, 0, 0);
+		clearPro_handle = CreateThread(NULL, 0, (LPTHREAD_START_ROUTINE)clearPro->ClearPro, clearPro, 0, 0);
 	}
 	else
 	{
@@ -259,23 +262,8 @@ void CDlgTab1::OnBnClickedCheckDiz()
 void CDlgTab1::OnBnClickedButtonClearPro()
 {
 	// TODO: Add your control notification handler code here
-	int nitem = m_cClearProList.GetItemCount();
-	if (nitem == 0)
-	{
-		MessageBox(L"清先查找文件");
-	}
-	else
-	{
-		for (int i = 0; i < nitem; i++)
-		{
-
-			CString path = m_cClearProList.GetItemText(0, 0);
-
-			m_cClearProList.DeleteItem(0);
-			DeleteFile(path);
-
-		}
-	}
-
+	clearPro->hWnd = new HWND();
+	clearPro->pList = &m_cClearProList;
+	clearPro->ClearFile(clearPro);
 }
 

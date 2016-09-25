@@ -2,6 +2,7 @@
 #include "afxwin.h"
 #include "Function.h"
 #include "afxcmn.h"
+#include "ClearPro.h"
 // CDlgTab1 ¶Ô»°¿ò
 
 class CDlgTab1 : public CDialogEx
@@ -34,7 +35,7 @@ public:
 	CEdit m_cProgress;
 	afx_msg void OnBnClickedButtonSeldisk();
 	afx_msg void OnBnClickedCheck5();
-	ClearStruct* clearPro = new ClearStruct();
+	CClearPro* clearPro = new CClearPro();
 
 	afx_msg void OnBnClickedCheckTmp();
 	afx_msg void OnBnClickedCheckLog();

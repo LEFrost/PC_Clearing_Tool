@@ -2,7 +2,7 @@
 #include "afxwin.h"
 #include "afxcmn.h"
 #include "Function.h"
-
+#include "FileCount.h"
 
 // CDlgTab4 ¶Ô»°¿ò
 

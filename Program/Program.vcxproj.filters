@@ -51,6 +51,24 @@
     <ClInclude Include="Function.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="ClearFolder.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="FindBigFile.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ClearPro.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="FindFileForCondition.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="FolderAndFileCreate.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="FileCount.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Program.cpp">
@@ -80,6 +98,24 @@
     <ClCompile Include="Function.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="ClearFolder.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="FindBigFile.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="ClearPro.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="FindFileForCondition.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="FolderAndFileCreate.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="FileCount.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Program.rc">
@@ -91,6 +127,7 @@
       <Filter>资源文件</Filter>
     </None>
     <None Include="ClassDiagram.cd" />
+    <None Include="ClassDiagram1.cd" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\Program.ico">

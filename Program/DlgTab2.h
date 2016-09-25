@@ -6,7 +6,8 @@
 #include "Function.h"
 #include "afxwin.h"
 #include "afxcmn.h"
-
+#include"FindFileForCondition.h"
+#include"FindBigFile.h"
 
 class CDlgTab2 : public CDialogEx
 {

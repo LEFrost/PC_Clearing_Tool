@@ -140,11 +140,11 @@ void CDlgTab2::OnBnClickedButtonTab2Find()
 {
 	// TODO: Add your control notification handler code here
 	m_cBigFile.DeleteAllItems();
-	ClearStruct * FindBig = new ClearStruct();
+	CFindBigFile * FindBig = new CFindBigFile();
 	FindBig->pList = &m_cBigFile;
 	m_cBigFileClear.GetWindowText(*(FindBig->strDir));
 	HANDLE handle;
-	handle = CreateThread(NULL, 0, (LPTHREAD_START_ROUTINE)FindBigFile, FindBig, 0, 0);
+	handle = CreateThread(NULL, 0, (LPTHREAD_START_ROUTINE)FindBig->FindBigFile, FindBig, 0, 0);
 }
 
 
@@ -181,7 +181,7 @@ void CDlgTab2::OnBnClickedButtonTba2Clear()
 	}
 }
 
-ClearStruct* fileCondition = new ClearStruct();
+static CFindFileForCondition* fileCondition = new CFindFileForCondition();
 void CDlgTab2::OnCbnSelchangeComboFilenameSle()
 {
 	// TODO: Add your control notification handler code here
@@ -231,13 +231,13 @@ void CDlgTab2::OnBnClickedButtonConditionfind()
 	fileCondition->pList = &m_cConditionFind;
 	if (selItem[0])
 	{
-		handle = CreateThread(NULL, 0, (LPTHREAD_START_ROUTINE)FindFileForTime, fileCondition, 0, 0);
+		handle = CreateThread(NULL, 0, (LPTHREAD_START_ROUTINE)fileCondition->FindFileForTime, fileCondition, 0, 0);
 
 	}
 	else if(selItem[1])
 	{
 		m_cConditionName.GetWindowText(fileCondition->Name);
-		handle = CreateThread(NULL, 0, (LPTHREAD_START_ROUTINE)FindFileForName, fileCondition, 0, 0);
+		handle = CreateThread(NULL, 0, (LPTHREAD_START_ROUTINE)fileCondition->FindFileForName, fileCondition, 0, 0);
 	}
 	else if(selItem[2])
 	{
@@ -258,7 +258,7 @@ void CDlgTab2::OnBnClickedButtonConditionfind()
 					MessageBox(L"最小值不能大于最小值");
 				else
 				{
-					handle = CreateThread(NULL, 0, (LPTHREAD_START_ROUTINE)FindFileForSize, fileCondition, 0, 0);
+					handle = CreateThread(NULL, 0, (LPTHREAD_START_ROUTINE)fileCondition->FindFileForSize, fileCondition, 0, 0);
 
 				}
 			}

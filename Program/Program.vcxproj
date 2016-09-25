@@ -185,11 +185,17 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ClearFolder.h" />
+    <ClInclude Include="ClearPro.h" />
     <ClInclude Include="DlgFileSize.h" />
     <ClInclude Include="DlgTab1.h" />
     <ClInclude Include="DlgTab2.h" />
     <ClInclude Include="DlgTab3.h" />
     <ClInclude Include="DlgTab4.h" />
+    <ClInclude Include="FileCount.h" />
+    <ClInclude Include="FindBigFile.h" />
+    <ClInclude Include="FindFileForCondition.h" />
+    <ClInclude Include="FolderAndFileCreate.h" />
     <ClInclude Include="Function.h" />
     <ClInclude Include="Program.h" />
     <ClInclude Include="ProgramDlg.h" />
@@ -198,11 +204,17 @@
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="ClearFolder.cpp" />
+    <ClCompile Include="ClearPro.cpp" />
     <ClCompile Include="DlgFileSize.cpp" />
     <ClCompile Include="DlgTab1.cpp" />
     <ClCompile Include="DlgTab2.cpp" />
     <ClCompile Include="DlgTab3.cpp" />
     <ClCompile Include="DlgTab4.cpp" />
+    <ClCompile Include="FileCount.cpp" />
+    <ClCompile Include="FindBigFile.cpp" />
+    <ClCompile Include="FindFileForCondition.cpp" />
+    <ClCompile Include="FolderAndFileCreate.cpp" />
     <ClCompile Include="Function.cpp" />
     <ClCompile Include="Program.cpp" />
     <ClCompile Include="ProgramDlg.cpp" />
@@ -218,6 +230,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />
+    <None Include="ClassDiagram1.cd" />
     <None Include="res\Program.rc2" />
   </ItemGroup>
   <ItemGroup>
