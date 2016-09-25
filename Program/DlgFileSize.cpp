@@ -38,7 +38,7 @@ END_MESSAGE_MAP()
 
 void CDlgFileSize::OnBnClickedButtonFilesizeOk()
 {
-	// TODO: 大小的页面传值
+	// TODO: 大小的页面传值\
 	this->OnOK();
 }
 
