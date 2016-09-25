@@ -85,7 +85,7 @@ void CDlgTab1::OnBnClickedButtonClearEasy()
 
 	HANDLE handle1, handle2;
 	//ClearStruct* clearStruct = new ClearStruct();
-	//clearStruct->cEdit = &m_cProgress;
+	m_cClearFolder->cEdit = &m_cProgress;
 
 	wchar_t path1[100];
 	SHGetSpecialFolderPath(0, path1, CSIDL_WINDOWS, 0);
